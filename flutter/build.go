@@ -3,8 +3,8 @@ package flutter
 /*
 // Linux Build Tags
 // ----------------
-#cgo linux CFLAGS: -I${SRCDIR}/library
-#cgo linux LDFLAGS: -lflutter_engine -Wl,-rpath,$ORIGIN
+#cgo linux CFLAGS: -I${SRCDIR}/library -I/usr/include -D_GLFW_X11
+#cgo linux LDFLAGS: -lflutter_engine -Wl,-rpath,$ORIGIN -lglfw
 
 // Windows Build Tags
 // ----------------
