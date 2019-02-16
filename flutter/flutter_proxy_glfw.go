@@ -2,6 +2,7 @@ package flutter
 
 /*
 #include "flutter_embedder.h"
+#include "GLFW/glfw3.h"
 
 static char *c_str(uint8_t *str){
 	return (char *)str;
@@ -69,4 +70,10 @@ func proxy_make_resource_current(v unsafe.Pointer) C.bool {
 	w := glfw.GoWindow(v)
 	index := *(*C.int)(w.GetUserPointer())
 	return C.bool(flutterEngines[index].FMakeResourceCurrent(v))
+}
+
+//export proxy_gl_proc_resolver
+func proxy_gl_proc_resolver(v unsafe.Pointer, procname *C.char) unsafe.Pointer {
+	// print(procname)
+	return unsafe.Pointer(C.glfwGetProcAddress(procname))
 }
